@@ -17,32 +17,36 @@ router.get("/", (req, res, next) => {
 
 router.get("/:recordId", (req, res, next) => {
   const id = req.params.recordId;
-  Record.findOne({ _id: id }, (err, record) => {
-    if (err) {
-      res.status(500).json({
-        error: "Record not found",
-      });
-    } else {
+  Record.findOne({ _id: id })
+    .exec()
+    .then((record) => {
       res.status(200).json({
         message: "Record found",
         record,
       });
-    }
-  });
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+
+  // , (err, record) => {
+  // if (err) {
+  //   res.status(500).json({
+  //     error: "Record not found",
+  //   });
+  // } else {
+  //   res.status(200).json({
+  //     message: "Record found",
+  //     record,
+  //   });
+  // }
+  // });
 });
 
 router.post("/", (req, res, next) => {
   const record = new Record({
     _id: new mongoose.Types.ObjectId(),
-    joeMarkFizzbuzz: req.body.joeMarkFizzbuzz,
-    joeMarkTwoSum: req.body.joeMarkTwoSum,
-    joeMarkLps: req.body.joeMarkLps,
-    emilyMarkFizzbuzz: req.body.emilyMarkFizzbuzz,
-    emilyMarkTwosum: req.body.emilyMarkTwosum,
-    emilyMarkLps: req.body.emilyMarkLps,
-    adamMarkFizzbuzz: req.body.adamMarkFizzbuzz,
-    adamMarkTwoSum: req.body.adamMarkTwoSum,
-    adamMarkLps: req.body.adamMarkLps,
+    ...req.body,
   });
 
   record
@@ -62,19 +66,21 @@ router.post("/", (req, res, next) => {
     });
 });
 
-
 router.delete("/all", (req, res, next) => {
-  Record.remove().exec().then(result => {
-    console.log("res:", result)
-    res.status(200).json({
-      message: "Success",
+  Record.remove()
+    .exec()
+    .then((result) => {
+      console.log("res:", result);
+      res.status(200).json({
+        message: "Success",
+      });
     })
-  }).catch(err => {
-    console.log("err:", err);
-    res.status(500).json({
-      message: "Error deleting all record",
-    })
-  })
-})
+    .catch((err) => {
+      console.log("err:", err);
+      res.status(500).json({
+        message: "Error deleting all record",
+      });
+    });
+});
 
 module.exports = router;

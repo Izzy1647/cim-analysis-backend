@@ -28,19 +28,6 @@ router.get("/:recordId", (req, res, next) => {
     .catch((err) => {
       res.status(500).json(err);
     });
-
-  // , (err, record) => {
-  // if (err) {
-  //   res.status(500).json({
-  //     error: "Record not found",
-  //   });
-  // } else {
-  //   res.status(200).json({
-  //     message: "Record found",
-  //     record,
-  //   });
-  // }
-  // });
 });
 
 router.post("/", (req, res, next) => {

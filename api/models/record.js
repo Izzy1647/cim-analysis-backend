@@ -12,12 +12,12 @@ const recordSchema = mongoose.Schema({
   adamMarkTwoSum: { type: Number, required: true },
   adamMarkLps: { type: Number, required: true },
 
-  joeFeedbackPositive: { type: String, required: true },
-  emilyFeedbackPositive: { type: String, required: true },
-  adamFeedbackPositive: { type: String, required: true },
-  joeFeedbackNegative: { type: String, required: true },
-  adamFeedbackNegative: { type: String, required: true },
-  emilyFeedbackNegative: { type: String, required: true },
+  joeFeedbackPositive: String,
+  emilyFeedbackPositive: String,
+  adamFeedbackPositive: String,
+  joeFeedbackNegative: String,
+  adamFeedbackNegative: String,
+  emilyFeedbackNegative: String,
 
   decision: {
     type: String,

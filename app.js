@@ -5,11 +5,12 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 
 const recordsRoutes = require("./api/routes/records");
+const statisticsRoutes = require("./api/routes/statistics");
 
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  `mongodb+srv://izzy1647:98z11z28Y@cluster0.fx02vkp.mongodb.net/?retryWrites=true&w=majority`,
+  `mongodb+srv://izzy1647:98z11z28Y@cluster0.fx02vkp.mongodb.net/?retryWrites=true&w=majority`
 );
 
 app.use(morgan("dev"));
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/records", recordsRoutes);
+app.use("/statistics", statisticsRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found.");

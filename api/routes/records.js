@@ -15,6 +15,18 @@ router.get("/", (req, res, next) => {
     });
 });
 
+router.get("/count/:candidate", (req, res, next) => {
+  const candidate = req.params.candidate;
+  Record.count({ decision: candidate })
+    .exec()
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 router.get("/:recordId", (req, res, next) => {
   const id = req.params.recordId;
   Record.findOne({ _id: id })

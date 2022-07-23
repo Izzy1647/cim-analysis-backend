@@ -2,4 +2,4 @@
 
 Restful api for cim analysis website.
 
-https://cim-be.cyclic.app/
+https://rich-jade-gopher-cuff.cyclic.app

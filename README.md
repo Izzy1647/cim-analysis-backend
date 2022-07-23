@@ -1,4 +1,4 @@
-# cim backend
+# cim-analysis backend
 
 Restful api for cim analysis website.
 

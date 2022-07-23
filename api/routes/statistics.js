@@ -34,9 +34,9 @@ router.get("/joe", (req, res, next) => {
       })
 
       res.status(200).json({
-        fizzbuzz: joeFizzbuzzScore / joeFizzbuzzCount,
-        twosum: joeTwosumScore / joeTwosumCount,
-        lps: joeLpsScore / joeLpsCount
+        fizzbuzz: (joeFizzbuzzScore / joeFizzbuzzCount).toFixed(2),
+        twosum: (joeTwosumScore / joeTwosumCount).toFixed(2),
+        lps: (joeLpsScore / joeLpsCount).toFixed(2)
       })
     })
     .catch((err) => {
@@ -75,9 +75,9 @@ router.get("/emily", (req, res, next) => {
       })
 
       res.status(200).json({
-        fizzbuzz: emilyFizzbuzzScore / emilyFizzbuzzCount,
-        twosum: emilyTwosumScore / emilyTwosumCount,
-        lps: emilyLpsScore / emilyLpsCount
+        fizzbuzz: (emilyFizzbuzzScore / emilyFizzbuzzCount).toFixed(2),
+        twosum: (emilyTwosumScore / emilyTwosumCount).toFixed(2),
+        lps: (emilyLpsScore / emilyLpsCount).toFixed(2)
       })
     })
     .catch((err) => {
@@ -115,9 +115,9 @@ router.get("/adam", (req, res, next) => {
       })
 
       res.status(200).json({
-        fizzbuzz: adamFizzbuzzScore / adamFizzbuzzCount,
-        twosum: adamTwosumScore / adamTwosumCount,
-        lps: adamLpsScore / adamLpsCount
+        fizzbuzz: (adamFizzbuzzScore / adamFizzbuzzCount).toFixed(2),
+        twosum: (adamTwosumScore / adamTwosumCount).toFixed(2),
+        lps: (adamLpsScore / adamLpsCount).toFixed(2)
       })
     })
     .catch((err) => {

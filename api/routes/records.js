@@ -21,11 +21,11 @@ router.get("/count", async (req, res, next) => {
     const emilyCount = await Record.count({ decision: "emily" }).exec();
     const adamCount = await Record.count({ decision: "adam" }).exec();
 
-    res.status(200).json({
-      joeCount,
-      emilyCount,
-      adamCount,
-    });
+    res.status(200).json([
+      { name: "Joe", value: joeCount },
+      { name: "Emily", value: emilyCount },
+      { name: "Adam", value: adamCount },
+    ]);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
